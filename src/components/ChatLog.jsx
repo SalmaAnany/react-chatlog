@@ -1,18 +1,28 @@
 import * as PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry.jsx';
-import {useState} from 'react';
 
-const ChatLog = ({entries}) => {
-  const [numOfLikes, setLikes] = useState(entries?.filter(i => i.liked === true)?.length);
-  return <div>
+const ChatLog = ({ entries, onToggleLike }) => {
+  return (
     <div>
-      {`${numOfLikes} ❤️s`}
+      {entries.map((entry) => (
+        <ChatEntry
+          key={entry.id}
+          id={entry.id}
+          body={entry.body}
+          sender={entry.sender}
+          timeStamp={entry.timeStamp}
+          liked={entry.liked}
+          onToggleLike={onToggleLike}
+          isLocal={entry.sender === 'Vladimir'}
+        />
+      ))}
     </div>
-    {
-      entries?.map(i => <ChatEntry key={i.id} body={i.body} sender={i.sender} timeStamp={i.timeStamp} liked={i.liked} numOfLikes={numOfLikes} setLikes={setLikes}
-        isLocal={i.sender ==='Vladimir'}/>)}
-  </div>;
+  );
 };
 
-ChatLog.propTypes = {entries: PropTypes.array.isRequired};
+ChatLog.propTypes = {
+  entries: PropTypes.array.isRequired,
+  onToggleLike: PropTypes.func.isRequired
+};
+
 export default ChatLog;

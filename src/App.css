@@ -14,10 +14,7 @@
 }
 
 #App main {
-  padding-left: 2em;
-  padding-right: 2em;
-  padding-bottom: 5rem;
-  padding-top: 10rem;
+  padding: 10rem 2em 5rem;
 }
 
 #App h1 {
@@ -28,6 +25,7 @@
 
 #App header section {
   background-color: #e0ffff;
+  color: #222222;
 }
 
 #App .widget {

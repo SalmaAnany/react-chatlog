@@ -42,7 +42,7 @@ const LOG = [
 
 describe('Wave 02: ChatLog', () => {
   beforeEach(() => {
-    render(<ChatLog entries={LOG} />);
+    render(<ChatLog entries={LOG} onToggleLike={vi.fn()}/>);
   });
 
   test('renders without crashing and shows all the names', () => {
